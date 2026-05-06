@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Explore Grand Teton National Park! Find park maps, hiking trails, scavenger hunts, reservations, and park blogs for an unforgettable adventure.">
+    <meta name="keywords" content="Grand Teton National Park, Teton, hiking trails, park map, reservations, national park blogs, Wyoming, mountain climbing">
+    <meta name="author" content="MyTetons">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kayla133.github.io/MyNationalParks/myteton/hiking.html">
+    <meta property="og:title" content="MyTetons | Grand Teton National Park Adventure Guide">
+    <meta property="og:description" content="Grand Teton National Park is full of beautiful views, clear lakes, alpine vistas, and pine tree groves. Plan your next adventure!">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kayla133.github.io/MyNationalParks/myteton/hiking.html">
+    <meta name="twitter:title" content="MyTetons | Grand Teton National Park Adventure Guide">
+    <meta name="twitter:description" content="Grand Teton National Park is full of beautiful views, clear lakes, alpine vistas, and pine tree groves. Plan your next adventure!">
+
+    <link rel="stylesheet" href="style.css">
+    <title>MyTetons</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+<style>
+    /* --- Global & Base Resets --- */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    header {
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    /* --- Navigation Styles (Mobile First) --- */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger on mobile */
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: none; /* Hide links by default on mobile */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Position below the navbar */
+        left: 0;
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        padding: 10px 0;
+        margin: 0;
+        z-index: 10;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 8px 0;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #3e5e3c;
+        display: block;
+    }
+
+    /* Class added by JavaScript to show the menu */
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* --- Main Content Area (Image Overlay) --- */
+
+    /* 1. Make Main the Positioning Context */
+    main {
+        position: relative; /* CRUCIAL for absolute children */
+        width: 100%;
+        height: auto;
+        min-height: 50vh;
+        overflow: hidden;
+    }
+
+    /* H2: Stays above the image */
+    h2 {
+        text-align: center;
+        margin: 20px auto;
+        width: 60%;
+        color: #3e5e3c;
+    }
+
+    /* Image: Responsive and takes up space */
+    .gros {
+        width: 100%;
+        height: auto; 
+        max-height: 600px; 
+        object-fit: cover;
+        display: block;
+    }
+
+    /* 2. Position the Option Links container ABSOLUTELY over the image */
+    /* We use the original .back and .day divs, but place them responsively */
+    
+    .back {
+        position: absolute;
+        top: 35%; /* Position higher on the image */
+        left: 50%;
+        transform: translateX(-50%); /* Center horizontally */
+        z-index: 2;
+        /* Removed unnecessary padding here */
+    }
+
+    .day {
+        position: absolute;
+        top: 60%; /* Position lower on the image */
+        left: 50%;
+        transform: translateX(-50%); /* Center horizontally */
+        z-index: 2;
+        /* Removed unnecessary padding here */
+    }
+
+    /* 3. Apply Original Button Styling to the Divs */
+    .back, .day {
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        width: 80%; /* Responsive width on mobile */
+        max-width: 250px; /* Cap size on mobile */
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .back a, .day a {
+        text-decoration: none;
+        color: #333; /* Dark text for light button background */
+        font-weight: normal;
+        font-size: 1em;
+    }
+
+    /* --- Footer Styles --- */
+    footer {
+        padding: 10px;
+        text-align: center;
+        background-color: #f8f8f8;
+        border-top: 1px solid #ddd;
+    }
+
+
+    /* --- Media Query for Desktop (Screen width > 768px) --- */
+    @media screen and (min-width: 768px) {
+        
+        /* Desktop Nav: Hide toggle, show links horizontally */
+        .menu-toggle {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: row;
+            position: static;
+            width: auto;
+            background: none;
+            border-top: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            padding: 0;
+            margin-left: 20px;
+        }
+
+        /* Desktop Main Content: Position buttons side-by-side (Centered vertically) */
+        
+        /* 1. Reset width for original desktop look */
+        .back, .day {
+            width: 200px; /* Original fixed width */
+        }
+        
+        /* 2. Reposition side-by-side */
+        .back {
+            top: 50%;
+            left: 35%; 
+            transform: translate(-50%, -55%); /* Adjusted slightly for visual centering */
+        }
+
+        .day {
+            top: 50%;
+            left: 65%; 
+            transform: translate(-50%, -55%);
+        }
+    }
+</style>
+
+</head>
+<body>
+    <header>
+        <img class="logo" src="img/flogo.PNG" alt="image of logo">
+    </header>
+    <nav class="navbar">
+        <button class="menu-toggle" aria-label="Open navigation menu">
+            ☰
+        </button>
+        <ul class="nav-links">
+            <li>
+                <a href="teton.html">MyTetons</a>
+            </li>
+            <li>
+                <a href="map.html">Park Map</a>
+            </li>
+            <li>
+                <a href="hunt.html">Scavenger Hunt</a>
+            </li>
+            <li>
+                <a href="reservations.html">Reservations</a>
+            </li>
+            <li>
+                <a href="blog.html">Park Blogs</a>
+            </li>
+            <li>
+                <a href="memories.html">Memories</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Choose your Hiking Adventure</h2>
+        <img class="gros" src="maps/hiking.JPG" alt="Image of a scenic hiking trail">
+        
+        <div class="back"><a href="backpacking.html">Backpacking</a></div>
+        <div class="day"><a href="dayhiking.html">Day Hiking</a></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyNationalParks</p>
+    </footer>
+<script src="script.js"></script>
+</body>
+</html>

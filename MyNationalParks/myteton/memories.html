@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MyTetons</title>
+    <style>
+        h2 {
+            text-align: center;
+            margin-bottom: 2%;
+            padding: 2%;
+        }
+
+        html {
+            background-color: #C8D6AF;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 700px;
+            margin: auto;
+            padding: 5%;
+            gap: 1.5rem;
+            place-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .box {
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            color: #3e5e3c;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .box:hover {
+            background-color: #f0f0f0;
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 120px auto;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #reservationForm input {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        #notes {
+            width: 100%;
+            /* full width of container */
+            height: 100px;
+            /* fixed height */
+            padding: 8px;
+            /* spacing inside */
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 10px;
+        }
+
+        #reservationForm {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="img/flogo.PNG" alt="image of logo">
+    </header>
+    <nav class="navbar">
+        <button class="menu-toggle" aria-label="Open navigation menu">
+            ☰
+        </button>
+        <ul class="nav-links">
+            <li>
+                <a href="teton.html">MyTetons</a>
+            </li>
+            <li>
+                <a href="map.html">Park Map</a>
+            </li>
+            <li>
+                <a href="hiking.html">Hiking Trails</a>
+            </li>
+            <li>
+                <a href="hunt.html">Scavenger Hunt</a>
+            </li>
+            <li>
+                <a href="reservations.html">Reservations</a>
+            </li>
+            <li>
+                <a href="blog.html">Park Blogs</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- <h2>Memories</h2>
+
+    <div class="grid" id="reservationGrid">
+        <div class="box" data-index="0">Add Memory</div>
+        <div class="box" data-index="1">Add Memory</div>
+        <div class="box" data-index="2">Add Memory</div>
+        <div class="box" data-index="3">Add Memory</div>
+        <div class="box" data-index="4">Add Memory</div>
+        <div class="box" data-index="5">Add Memory</div>
+    </div>
+
+
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+
+            <form id="reservationForm">
+                <label>Location:</label>
+                <input type="text" id="name" required>
+
+                <label for="type">Type:</label>
+                <select id="type">
+                    <option value="">-- Select Type --</option>
+                </select>
+
+                <br>
+
+                <label>Start Date:</label>
+                <input type="date" id="startDate" required>
+
+                <label>End Date:</label>
+                <input type="date" id="endDate">
+
+                <br>
+
+
+                <label for="photo-input">Upload a photo:</label>
+                <input type="file" id="photo-input">
+
+                <label for="notes">Notes:</label>
+                <br>
+                <textarea id="notes" placeholder="Write information about your reservation..."></textarea>
+
+                <button type="submit">Save Reservation</button>
+            </form>
+        </div>
+    </div> -->
+
+    <h2>We are currently working on this page. Updates will be published soon.</h2>
+
+    <footer>
+        <p>&copy; 2025 MyNationalParks</p>
+    </footer>
+
+    <script src="res.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

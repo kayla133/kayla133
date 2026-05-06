@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Explore Grand Teton National Park! Find park maps, hiking trails, scavenger hunts, reservations, and park blogs for an unforgettable adventure.">
+    <meta name="keywords"
+        content="Grand Teton National Park, Teton, hiking trails, park map, reservations, national park blogs, Wyoming, mountain climbing">
+    <meta name="author" content="MyTetons">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kayla133.github.io/MyNationalParks/myteton/hunt.html">
+    <meta property="og:title" content="MyTetons | Grand Teton National Park Adventure Guide">
+    <meta property="og:description"
+        content="Grand Teton National Park is full of beautiful views, clear lakes, alpine vistas, and pine tree groves. Plan your next adventure!">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kayla133.github.io/MyNationalParks/myteton/hunt.html">
+    <meta name="twitter:title" content="MyTetons | Grand Teton National Park Adventure Guide">
+    <meta name="twitter:description"
+        content="Grand Teton National Park is full of beautiful views, clear lakes, alpine vistas, and pine tree groves. Plan your next adventure!">
+
+    <link rel="stylesheet" href="style.css">
+    <title>MyTetons</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        #map-container {
+            position: relative;
+            width: 75%;
+            margin: 0 auto;
+        }
+
+        #park-map {
+            width: 100%;
+            cursor: crosshair;
+        }
+
+        .animal-icon {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            transform: translate(-50%, -50%);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Form styling */
+        #entry-form {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f5f5f5;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 25px 20px;
+            width: 320px;
+            z-index: 10;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #3e5e3c;
+        }
+
+        .form-group select,
+        .form-group input[type="file"],
+        .form-group textarea {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button-group button {
+            background-color: #3e5e3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .button-group button:hover {
+            background-color: #2e4730;
+        }
+
+
+        /* 🧭 Form fade animation */
+        #entry-form {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #entry-form.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* 📍 Universal pin styling */
+        .map-pin {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            transform: translate(-50%, -100%);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .map-pin:hover {
+            transform: translate(-50%, -110%) scale(1.1);
+        }
+
+        /* 🧭 Form fade animation */
+        #entry-form {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #entry-form.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* 📍 Pin styling */
+        .map-pin {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            transform: translate(-50%, -100%);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .map-pin:hover {
+            transform: translate(-50%, -110%) scale(1.1);
+        }
+
+        /* 💬 Tooltip styling */
+        .tooltip {
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 12px;
+            color: #222;
+            white-space: nowrap;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-4px);
+        }
+
+        #clear-entries {
+            background-color: #3e5e3c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .sighting-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            text-align: left;
+            font-family: sans-serif;
+        }
+
+        .sighting-popup button {
+            margin-top: 10px;
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .sighting-popup button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="img/flogo.PNG" alt="image of logo">
+    </header>
+    <nav class="navbar">
+        <button class="menu-toggle" aria-label="Open navigation menu">
+            ☰
+        </button>
+        <ul class="nav-links">
+            <li>
+                <a href="teton.html">MyTetons</a>
+            </li>
+            <li>
+                <a href="map.html">Park Map</a>
+            </li>
+            <li>
+                <a href="hiking.html">Hiking Trails</a>
+            </li>
+            <li>
+                <a href="reservations.html">Reservations</a>
+            </li>
+            <li>
+                <a href="blog.html">Park Blogs</a>
+            </li>
+            <li>
+                <a href="memories.html">Memories</a>
+            </li>
+        </ul>
+    </nav>
+
+    <h2>Scavenger Hunt</h2>
+
+    <div class="button-container">
+        <button id="clear-entries">Clear Entries</button>
+    </div>
+
+
+    <div id="map-container">
+        <img id="park-map" src="maps/teton.jpg" alt="National Park Map">
+    </div>
+    <div id="entry-form" class="hidden">
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <textarea id="location" placeholder="Where did you see this animal..."></textarea>
+        </div>
+        <div class="form-group">
+            <label for="category">Choose Category:</label>
+            <select id="category">
+                <option value="">-- Select Category --</option>
+                <option value="mammals">Mammals</option>
+                <option value="birds">Birds</option>
+                <option value="reptiles">Reptiles</option>
+                <option value="fish">Fish</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="animal">Choose Animal:</label>
+            <select id="animal">
+                <option value="">-- Select Animal --</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="photo-input">Upload a photo:</label>
+            <input type="file" id="photo-input">
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Notes:</label>
+            <textarea id="notes" placeholder="Write about your sighting..."></textarea>
+        </div>
+
+        <div class="form-group button-group">
+            <button id="save-entry">Save Sighting</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 MyNationalParks</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

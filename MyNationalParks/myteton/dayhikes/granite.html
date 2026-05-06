@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MyNationalParks</title>
+</head>
+<style>
+    main {
+        height: 250px;
+    }
+
+    section {
+        color: #3e5e3c;
+        padding: 2%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 1rem;
+        align-items: center;
+        max-width: 900px;
+        margin: 0 auto;
+        justify-content: center;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <header>
+        <img class="logo" src="flogo.PNG" alt="image of logo">
+    </header>
+    <nav class="navbar">
+        <button class="menu-toggle" aria-label="Open navigation menu">
+            ☰
+        </button>
+        <ul class="nav-links">
+            <li>
+                <a href="death.html">Death Canyon Trailhead</a>
+            </li>
+            <li>
+                <a href="jenny.html">Jenny Lake Trailhead</a>
+            </li>
+            <li>
+                <a href="inst.html">Inspiration's Point</a>
+            </li>
+            <li>
+                <a href="rock.html">Laurance S. Rockefeller Preserve Trailhead</a>
+            </li>
+        </ul>
+    </nav>
+    <h2>Granite Canoyon Trailhead</h2>
+    <section>
+        <div class="info">
+            <!-- host any blogs and button to get to main hiking page -->
+            <a href="https://www.nps.gov/thingstodo/granite-canyon.htm">More Info</a>
+            <img src="imgs/graniteone.jpg" alt="photo of Phelps Lake">
+            <a href="../dayhiking.html">Day Hikes</a>
+        </div>
+        <main>
+            <h3>Marion Lake</h3>
+            <ul>
+                <li>12 Hours</li>
+                <li>18.5 Miles (29.7 km)</li>
+                <li>Strenuous</li>
+            </ul>
+            <hr>
+
+            <h3>Top of the Tram</h3>
+            <ul>
+                <li>10 Hours</li>
+                <li>11.7 Miles (18.8 km)</li>
+            </ul>
+
+
+
+        </main>
+        <div class="images">
+            <img src="imgs/granitetwo.jpg" alt="photo of Phelps Lake">
+            <img src="imgs/granitethree.jpeg" alt="photo of Death Canyon">
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 MyNationalParks</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
